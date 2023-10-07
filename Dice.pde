@@ -2,7 +2,7 @@ Die dien;
 void setup()
 {
   background(0,100,100);
-  size(1000,1000);
+  size(600,550);
   noLoop();
 }
 void draw()
