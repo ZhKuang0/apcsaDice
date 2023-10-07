@@ -1,74 +1,81 @@
-Dice dien;
+Die dien;
 void setup()
 {
-	background(0,100,100);
-	size(500,500);
-	noLoop();
+  background(0,100,100);
+  size(1000,1000);
+  noLoop();
 }
 void draw()
 {
-	int sum = 0;
-	for(int y=0;y < = 501;y += 50){
-  	for(int x=0;x <= 500; x += 50){
-  	dien = new Dice(x, y);
-  	dien.show();
-  	dien.roll();
-  	sum = sum + dien.face;
+  int sum = 0;
+  for(int x = 0; x <= 500; x += 50){
+    for(int y = 70; y <= 500; y += 50){
+      dien = new Die(20 + x, 20 + y);
+      dien.show();
+      sum = sum + dien.broll;
+    }
+  }
+  fill(0,0,0);
+  textSize(30);
+  text("sum: " + sum, 50,50);
 }
 void mousePressed()
 {
-	redraw();
+  redraw();
 }
 class Die //models one single dice cube
 {
-int myX, myY, mySize, face;
-  Dice(int x, int y)
+  int ax, cx, broll;
+  
+  Die(int x, int y) //constructor
   {
-    face = (int)(Math.random()*6)+1;
-    myX = x;
-    myY = y;
-    mySize = 50;
+    ax = x;
+    cx = y;
   }
-	}
-	void roll()
-	{
-	 if (face == 1) {
+  void roll()
+  {
+    broll = (int) (Math.random()*6+1);
+  }
+  void show()
+  {
+        int size = 40;
+    fill(255,255,255);
+    rect(ax, cx, size, size);
+    fill(255);
+    roll();
+    if(broll == 1){
       fill(0);
-      ellipse(myX+20, myY+20, 7, 7);
-    } else if (face ==2) {
+      ellipse(ax+20, cx+20, 7, 7);
+    } else if(broll ==2) {
       fill(0);
-      ellipse(myX+10, myY+10, 7, 7);
-      ellipse(myX+30, myY+30, 7, 7);
-    } else if (face == 3) {
+      ellipse(ax+10, cx+10, 7, 7);
+      ellipse(ax+30, cx+30, 7, 7);
+    } else if(broll == 3) {
       fill(0);
-      ellipse(myX+10, myY+10, 7, 7);
-      ellipse(myX+20, myY+20, 7, 7);
-      ellipse(myX+30, myY+30, 7, 7);
-    } else if (face == 4) {
+      ellipse(ax+10, cx+10, 7, 7);
+      ellipse(ax+20, cx+20, 7, 7);
+      ellipse(ax+30, cx+30, 7, 7);
+    } else if(broll == 4) {
       fill(0);
-      ellipse(myX+10, myY+10, 7, 7);
-      ellipse(myX+30, myY+10, 7, 7);
-      ellipse(myX+10, myY+30, 7, 7);
-      ellipse(myX+30, myY+30, 7, 7);
-    } else if (face == 5) {
+      ellipse(ax+10, cx+10, 7, 7);
+      ellipse(ax+30, cx+10, 7, 7);
+      ellipse(ax+10, cx+30, 7, 7);
+      ellipse(ax+30, cx+30, 7, 7);
+    } else if(broll == 5) {
       fill(0);
-      ellipse(myX+10, myY+10, 7, 7);
-      ellipse(myX+30, myY+10, 7, 7);
-      ellipse(myX+10, myY+30, 7, 7);
-      ellipse(myX+30, myY+30, 7, 7);
-      ellipse(myX+20, myY+20, 7, 7);
+      ellipse(ax+10, cx+10, 7, 7);
+      ellipse(ax+30, cx+10, 7, 7);
+      ellipse(ax+10, cx+30, 7, 7);
+      ellipse(ax+30, cx+30, 7, 7);
+      ellipse(ax+20, cx+20, 7, 7);
     } else {
       fill(0);
-      ellipse(myX+10, myY+10, 7, 7);
-      ellipse(myX+10, myY+20, 7, 7);
-      ellipse(myX+10, myY+30, 7, 7);
-      ellipse(myX+30, myY+10, 7, 7);
-      ellipse(myX+30, myY+20, 7, 7);
-      ellipse(myX+30, myY+30, 7, 7);
-	}
-	void show()
-	{
-		 fill(255, 255, 255);
-    rect(myX, myY, mySize, mySize, 10);
-	}
+      ellipse(ax+10, cx+10, 7, 7);
+      ellipse(ax+10, cx+20, 7, 7);
+      ellipse(ax+10, cx+30, 7, 7);
+      ellipse(ax+30, cx+10, 7, 7);
+      ellipse(ax+30, cx+20, 7, 7);
+      ellipse(ax+30, cx+30, 7, 7);
+    }
+  }
 }
